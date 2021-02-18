@@ -81,7 +81,7 @@ abstract class AbstractResponder implements ResponderAcceptsInterface, StatusCod
             ));
         }
         $this->response = $this->response->withStatus($status);
-        $this->response = $this->response->withHeader('Location', $url);
+        $this->response = $this->response->withHeader('Location', $uri);
     }
 
     protected function body($data) : void
