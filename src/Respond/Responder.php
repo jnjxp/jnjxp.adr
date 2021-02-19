@@ -35,27 +35,15 @@ class Responder extends AbstractResponder
         $this->body($this->payload->getResult());
     }
 
-    protected function failure() : void
-    {
-        $this->response = $this->response->withStatus(self::STATUS_BAD_REQUEST);
-        $this->body($this->payload->getResult());
-    }
-
     protected function found() : void
     {
         $this->response = $this->response->withStatus(self::STATUS_OK);
         $this->body($this->payload->getResult());
     }
 
-    protected function notAuthenticated() : void
+    protected function unauthorized() : void
     {
         $this->response = $this->response->withStatus(self::STATUS_UNAUTHORIZED);
-        $this->body($this->payload->getResult());
-    }
-
-    protected function notAuthorized() : void
-    {
-        $this->response = $this->response->withStatus(self::STATUS_FORBIDDEN);
         $this->body($this->payload->getResult());
     }
 
@@ -65,7 +53,7 @@ class Responder extends AbstractResponder
         $this->body($this->payload->getResult());
     }
 
-    protected function notValid() : void
+    protected function invalid() : void
     {
         $this->response = $this->response->withStatus(self::STATUS_UNPROCESSABLE_ENTITY);
         $this->body($this->payload->getResult());
